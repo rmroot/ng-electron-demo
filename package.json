@@ -1,13 +1,53 @@
 {
   "name": "ng-electron-demo",
+  "author": {
+    "name": "mroot"
+  },
+  "description": "example angular electron project.",
   "version": "0.0.0",
+  "main": "src/electron.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "start-electron": "electron-forge start",
+    "make": "electron-forge make"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm"
+      },
+      "electronWinstallerConfig": {
+        "name": "ng-electron-demo"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "ng-electron-demo"
+      }
+    }
   },
   "private": true,
   "dependencies": {
@@ -21,6 +61,9 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
+    "electron-compile": "^6.4.2",
+    "electron-squirrel-startup": "^1.0.0",
+    "ngx-electron": "^1.0.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -34,6 +77,9 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "electron": "2.0.0",
+    "electron-forge": "^5.2.0",
+    "electron-prebuilt-compile": "1.8.4",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
